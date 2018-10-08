@@ -14,9 +14,12 @@ int main(void)
 {
   int highest_num = 0, lowest_num = 0;
   int largest_common = 0;
-  int i;
+  int i; /* ANSI C89: for-loop */
 
-  /* prompts user for two integers */
+  /* 
+   * prompts user for two integers 
+   * keeps prompting until user enters two positive numbers
+  */
   while (true)
   {
     printf("Enter two positive numbers: ");
