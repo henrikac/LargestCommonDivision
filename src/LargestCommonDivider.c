@@ -5,16 +5,32 @@
  * Coming soon...
 */
 
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 
+  #ifdef _WIN32
+    #define CLEAR "cls"
+  #else
+    #define CLEAR "clear"
+  #endif
+
 typedef enum { false, true } bool;
+
+bool is_prime(int num);
 
 int main(void)
 {
   int highest_num = 0, lowest_num = 0;
   int largest_common = 0;
   int i; /* ANSI C89: for-loop */
+
+  /* clear the console */
+  system(CLEAR);
+
+  printf("========================");
+  printf("\nLargest Common Division\n");
+  printf("========================\n\n");
 
   /* 
    * prompts user for two integers 
@@ -42,17 +58,53 @@ int main(void)
     printf("\nPlease only enter positive numbers\n");
   }
 
-  printf("Highest number = %d\nLowest number = %d", highest_num, lowest_num);
+  printf("\nHighest number = %d\nLowest number = %d", highest_num, lowest_num);
 
-  for (i = 1; i <= lowest_num; i++)
+  /* checks if user entered a prime number */
+  if (is_prime(highest_num) || is_prime(lowest_num))
   {
-    if (highest_num % i == 0 && lowest_num % i == 0)
+    bool high_divby_low = highest_num % lowest_num == 0;
+    largest_common = high_divby_low ? lowest_num : 1;
+
+    if (is_prime(highest_num) && is_prime(lowest_num))
+      printf("\nBoth numbers are prime numbers");
+    else
+      printf("\n%d is a prime number and %d / %d %s",
+        is_prime(highest_num) ? highest_num : lowest_num,
+        highest_num,
+        lowest_num,
+        high_divby_low ? "returns a whole number" : "does not return a whole number");
+  }
+  else /* if no prime number entered - start check each number <= lowest_num */
+  {
+    for (i = 1; i <= lowest_num; i++)
     {
-      largest_common = i;
+      if (highest_num % i == 0 && lowest_num % i == 0)
+      {
+        largest_common = i;
+      }
     }
   }
 
-  printf("\nLargest common divider = %d", largest_common);
+  printf("\nLargest common divider = %d\n", largest_common);
 
   return EXIT_SUCCESS;
+}
+
+bool is_prime(int num)
+{
+  int i;
+
+  if (num <= 3)
+    return true;
+  else if (num % 2 == 0 || num % 3 == 0)
+    return false;
+  
+  for (i = 3; i <= sqrt(num); i++)
+  {
+    if (num % i == 0)
+      return false;
+  }
+
+  return true;
 }
