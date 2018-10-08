@@ -107,7 +107,7 @@ bool is_prime(int num)
   else if (num % 2 == 0 || num % 3 == 0)
     return false;
   
-  for (i = 3; i <= sqrt(num); i++)
+  for (i = 3; i <= sqrt(num); i += 2)
   {
     if (num % i == 0)
       return false;
