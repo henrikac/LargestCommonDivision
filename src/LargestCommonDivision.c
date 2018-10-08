@@ -46,7 +46,13 @@ int main(void)
   while (true)
   {
     printf("Enter two positive numbers: ");
-    scanf(" %d %d", &highest_num, &lowest_num);
+
+    /* checks if user input is valid (a number) */
+    if (scanf(" %d %d", &highest_num, &lowest_num) != 2)
+    {
+      printf("\nInvalid input!\n");
+      return EXIT_FAILURE;
+    }
 
     /* 
      * checking if input is positive integers
