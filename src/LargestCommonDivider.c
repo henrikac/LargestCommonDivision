@@ -2,7 +2,14 @@
  * Programmer: Henrik A. Christensen     Date Completed: in progress
  * Instructor: Kurt Nørmark              Class:          Imperative Programming
  *
- * Coming soon...
+ * User enters two numbers positive numbers
+ * the program then returns the largest division of the two numbers
+ * 
+ * Examples:
+ * 
+ * 21 18   should return  3
+ * 315 120 should return 15
+ * 408 456 should return 24
 */
 
 #include <math.h>
