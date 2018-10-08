@@ -93,7 +93,7 @@ int main(void)
     }
   }
 
-  printf("\nLargest common divider = %d\n", largest_common);
+  printf("\nLargest common division = %d\n", largest_common);
 
   return EXIT_SUCCESS;
 }
