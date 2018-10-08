@@ -48,7 +48,10 @@ int main(void)
     printf("Enter two positive numbers: ");
     scanf(" %d %d", &highest_num, &lowest_num);
 
-    /* checking if input is positive integers */
+    /* 
+     * checking if input is positive integers
+     * this also prevents division by 0
+    */
     if (highest_num > 0 && lowest_num > 0)
     {
       /* swapping values if lowest_num > highest_num */
@@ -59,41 +62,42 @@ int main(void)
         highest_num = temp;
       }
 
+      printf("\nHighest number = %d\nLowest number = %d", highest_num, lowest_num);
+
+      /* checks if user entered a prime number */
+      if (is_prime(highest_num) || is_prime(lowest_num))
+      {
+        bool high_divby_low = highest_num % lowest_num == 0;
+        largest_common = high_divby_low ? lowest_num : 1;
+
+        if (is_prime(highest_num) && is_prime(lowest_num))
+          printf("\nBoth numbers are prime numbers");
+        else
+          printf("\n%d is a prime number and %d / %d %s",
+            is_prime(highest_num) ? highest_num : lowest_num,
+            highest_num,
+            lowest_num,
+            high_divby_low ? "returns a whole number" : "does not return a whole number");
+      }
+      else /* if no prime number entered - start check each number <= lowest_num */
+      {
+        for (i = 1; i <= lowest_num; i++)
+        {
+          if (highest_num % i == 0 && lowest_num % i == 0)
+          {
+            largest_common = i;
+          }
+        }
+      }
+
+      printf("\nLargest common division = %d\n\n", largest_common);
+    }
+    else
+    {
+      printf("\nPlease only enter positive numbers\n");
       break;
     }
-
-    printf("\nPlease only enter positive numbers\n");
   }
-
-  printf("\nHighest number = %d\nLowest number = %d", highest_num, lowest_num);
-
-  /* checks if user entered a prime number */
-  if (is_prime(highest_num) || is_prime(lowest_num))
-  {
-    bool high_divby_low = highest_num % lowest_num == 0;
-    largest_common = high_divby_low ? lowest_num : 1;
-
-    if (is_prime(highest_num) && is_prime(lowest_num))
-      printf("\nBoth numbers are prime numbers");
-    else
-      printf("\n%d is a prime number and %d / %d %s",
-        is_prime(highest_num) ? highest_num : lowest_num,
-        highest_num,
-        lowest_num,
-        high_divby_low ? "returns a whole number" : "does not return a whole number");
-  }
-  else /* if no prime number entered - start check each number <= lowest_num */
-  {
-    for (i = 1; i <= lowest_num; i++)
-    {
-      if (highest_num % i == 0 && lowest_num % i == 0)
-      {
-        largest_common = i;
-      }
-    }
-  }
-
-  printf("\nLargest common division = %d\n", largest_common);
 
   return EXIT_SUCCESS;
 }
