@@ -12,26 +12,25 @@ typedef enum { false, true } bool;
 
 int main(void)
 {
-  int num_one = 0, num_two = 0, highest_num = 0, lowest_num = 0;
+  int highest_num = 0, lowest_num = 0;
+  int largest_common = 0;
+  int i;
 
   /* prompts user for two integers */
   while (true)
   {
     printf("Enter two positive numbers: ");
-    scanf(" %d %d", &num_one, &num_two);
+    scanf(" %d %d", &highest_num, &lowest_num);
 
     /* checking if input is positive integers */
-    if (num_one > 0 && num_two > 0)
+    if (highest_num > 0 && lowest_num > 0)
     {
-      if (num_one > num_two)
+      /* swapping values if lowest_num > highest_num */
+      if (lowest_num > highest_num)
       {
-        highest_num = num_one;
-        lowest_num = num_two;
-      }
-      else
-      {
-        highest_num = num_two;
-        lowest_num = num_one;
+        int temp = lowest_num;
+        lowest_num = highest_num;
+        highest_num = temp;
       }
 
       break;
@@ -41,6 +40,16 @@ int main(void)
   }
 
   printf("Highest number = %d\nLowest number = %d", highest_num, lowest_num);
+
+  for (i = 1; i <= lowest_num; i++)
+  {
+    if (highest_num % i == 0 && lowest_num % i == 0)
+    {
+      largest_common = i;
+    }
+  }
+
+  printf("\nLargest common divider = %d", largest_common);
 
   return EXIT_SUCCESS;
 }
