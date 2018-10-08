@@ -16,11 +16,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-  #ifdef _WIN32
-    #define CLEAR "cls"
-  #else
-    #define CLEAR "clear"
-  #endif
+#ifdef _WIN32
+  #define CLEAR "cls"
+#else
+  #define CLEAR "clear"
+#endif
 
 typedef enum { false, true } bool;
 
