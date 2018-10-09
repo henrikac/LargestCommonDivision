@@ -87,7 +87,15 @@ int main(void)
     {
       bool both_0 = highest_num == 0 && lowest_num == 0 ? true : false;
       largest_common = 0;
-      printf("\n%s is 0\n\n", both_0 ? "Both numbers" : "One of the numbers");
+      printf("\n%s 0", both_0 ? "Both numbers are" : "One of the numbers is");
+      printf("\nLargest common division = %d\n\n", largest_common);
+      continue;
+    }
+    else if (highest_num == lowest_num)
+    {
+      largest_common = highest_num;
+      printf("\nThe entered numbers are equal: %d = %d", highest_num, lowest_num);
+      printf("\nLargest common division = %d\n\n", largest_common);
       continue;
     }
 
