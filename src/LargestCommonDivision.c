@@ -33,6 +33,7 @@ int main(void)
   int highest_num = 0, lowest_num = 0;
   int largest_common = 0;
   int i; /* ANSI C89: for-loop */
+  bool is_high_prime = false, is_low_prime = false;
 
   /* clear the console */
   system(CLEAR);
@@ -91,16 +92,19 @@ int main(void)
     }
 
     /* checks if user entered a prime number */
-    if (is_prime(highest_num) || is_prime(lowest_num))
+    is_high_prime = is_prime(highest_num);
+    is_low_prime = is_prime(lowest_num);
+
+    if (is_high_prime || is_low_prime)
     {
       bool high_divby_low = highest_num % lowest_num == 0;
       largest_common = high_divby_low ? lowest_num : 1;
 
-      if (is_prime(highest_num) && is_prime(lowest_num))
+      if (is_high_prime && is_low_prime)
         printf("\nBoth numbers are prime numbers");
       else
         printf("\n%d is a prime number and %d / %d %s",
-          is_prime(highest_num) ? highest_num : lowest_num,
+          is_high_prime ? highest_num : lowest_num,
           highest_num,
           lowest_num,
           high_divby_low ? "returns a whole number" : "does not return a whole number");
