@@ -125,13 +125,14 @@ int main(void)
 bool is_prime(int num)
 {
   int i;
+  int sqrt_num = sqrt(num);
 
   if (num <= 3)
     return true;
   else if (num % 2 == 0 || num % 3 == 0)
     return false;
   
-  for (i = 3; i <= sqrt(num); i += 2)
+  for (i = 5; i <= sqrt_num; i += 2)
   {
     if (num % i == 0)
       return false;
