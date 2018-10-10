@@ -10,6 +10,8 @@
  * 21 18   should return  3
  * 315 120 should return 15
  * 408 456 should return 24
+ * 15 0    should return 15
+ * 0 0     should return  0
 */
 
 #include <math.h>
@@ -80,15 +82,18 @@ int main(void)
     printf("\nHighest number = %d\nLowest number = %d", highest_num, lowest_num);
 
     /*
-     * checks if one of the numbers entered is 0
-     * and restart loop if true
+     * checks if one (or both) of entered numbers is 0 or equal
     */
-    if (highest_num == 0 || lowest_num == 0)
+    if (highest_num == 0 && lowest_num == 0)
     {
-      bool both_0 = highest_num == 0 && lowest_num == 0 ? true : false;
       largest_common = 0;
-      printf("\n%s 0", both_0 ? "Both numbers are" : "One of the numbers is");
+      printf("\nBoth numbers are 0");
       printf("\nLargest common division = %d\n\n", largest_common);
+      continue;
+    }
+    else if (lowest_num == 0)
+    {
+      printf("\nLargest common division = %d\n\n", highest_num);
       continue;
     }
     else if (highest_num == lowest_num)
@@ -111,7 +116,7 @@ int main(void)
       if (is_high_prime && is_low_prime)
         printf("\nBoth numbers are prime numbers");
       else
-        printf("\n%d is a prime number and %d / %d %s",
+        printf("\n%d is a prime number (%d / %d %s)",
           is_high_prime ? highest_num : lowest_num,
           highest_num,
           lowest_num,
