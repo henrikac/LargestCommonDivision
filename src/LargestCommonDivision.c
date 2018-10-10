@@ -1,5 +1,5 @@
 /*
- * Programmer: Henrik A. Christensen     Date Completed: 09-10-2019
+ * Programmer: Henrik A. Christensen     Date Completed: 10-10-2019
  * Instructor: Kurt Nørmark              Class:          Imperative Programming
  *
  * User enters two numbers positive numbers
