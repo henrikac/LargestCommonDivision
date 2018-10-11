@@ -46,8 +46,7 @@ int main(void)
 
   /* 
    * prompts user for two integers 
-   * keeps prompting until user enters two positive numbers
-   * and exit the program if user enters a negative number or a char
+   * keeps prompting until user enters a negative number (or invalid input)
   */
   while (true)
   {
