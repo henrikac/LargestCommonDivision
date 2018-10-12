@@ -142,7 +142,9 @@ bool is_prime(int num)
   int i;
   int sqrt_num = sqrt(num);
 
-  if (num <= 3)
+  if (num == 1)
+    return false;
+  else if (num <= 3)
     return true;
   else if (num % 2 == 0 || num % 3 == 0)
     return false;
