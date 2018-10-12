@@ -30,12 +30,12 @@ typedef enum { false, true } bool;
 
 void print_largest_divisor(int largest_divisor);
 bool is_prime(int num);
+int get_largest_divisor(int highest_num, int lowest_num);
 
 int main(void)
 {
   int highest_num = 0, lowest_num = 0;
   int largest_common = 0;
-  int i; /* ANSI C89: for-loop */
   bool is_high_prime = false, is_low_prime = false;
 
   /* clear the console */
@@ -123,13 +123,7 @@ int main(void)
     }
     else /* if no prime number entered - start check each number <= lowest_num */
     {
-      for (i = 1; i <= lowest_num; i++)
-      {
-        if (highest_num % i == 0 && lowest_num % i == 0)
-        {
-          largest_common = i;
-        }
-      }
+      largest_common = get_largest_divisor(highest_num, lowest_num);
     }
 
     print_largest_divisor(largest_common);
@@ -160,4 +154,19 @@ bool is_prime(int num)
   }
 
   return true;
+}
+
+int get_largest_divisor(int highest_num, int lowest_num)
+{
+  int i, largest_divisor;
+
+  for (i = 1; i <= lowest_num; i++)
+  {
+    if (highest_num % i == 0 && lowest_num % i == 0)
+    {
+      largest_divisor = i;
+    }
+  }
+
+  return largest_divisor;
 }
