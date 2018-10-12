@@ -3,7 +3,7 @@
  * Instructor: Kurt Nørmark              Class:          Imperative Programming
  *
  * User enters two numbers positive numbers
- * the program then returns the largest division of the two numbers
+ * the program then returns the largest divisor of the two numbers
  * 
  * Examples:
  * 
@@ -41,7 +41,7 @@ int main(void)
   system(CLEAR);
 
   printf("========================");
-  printf("\nLargest Common Division\n");
+  printf("\nLargest Common Divisor\n");
   printf("========================\n\n");
 
   /* 
@@ -86,19 +86,19 @@ int main(void)
     {
       largest_common = 0;
       printf("\nBoth numbers are 0");
-      printf("\nLargest common division = %d\n\n", largest_common);
+      printf("\nLargest common divisor = %d\n\n", largest_common);
       continue;
     }
     else if (lowest_num == 0)
     {
-      printf("\nLargest common division = %d\n\n", highest_num);
+      printf("\nLargest common divisor = %d\n\n", highest_num);
       continue;
     }
     else if (highest_num == lowest_num)
     {
       largest_common = highest_num;
       printf("\nThe entered numbers are equal: %d = %d", highest_num, lowest_num);
-      printf("\nLargest common division = %d\n\n", largest_common);
+      printf("\nLargest common divisor = %d\n\n", largest_common);
       continue;
     }
 
@@ -131,7 +131,7 @@ int main(void)
       }
     }
 
-    printf("\nLargest common division = %d\n\n", largest_common);
+    printf("\nLargest common divisor = %d\n\n", largest_common);
   }
 
   return EXIT_SUCCESS;
