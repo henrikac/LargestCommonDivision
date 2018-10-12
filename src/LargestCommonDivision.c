@@ -28,6 +28,7 @@
 
 typedef enum { false, true } bool;
 
+void print_largest_divisor(int largest_divisor);
 bool is_prime(int num);
 
 int main(void)
@@ -86,19 +87,19 @@ int main(void)
     {
       largest_common = 0;
       printf("\nBoth numbers are 0");
-      printf("\nLargest common divisor = %d\n\n", largest_common);
+      print_largest_divisor(largest_common);
       continue;
     }
     else if (lowest_num == 0)
     {
-      printf("\nLargest common divisor = %d\n\n", highest_num);
+      print_largest_divisor(highest_num);
       continue;
     }
     else if (highest_num == lowest_num)
     {
       largest_common = highest_num;
       printf("\nThe entered numbers are equal: %d = %d", highest_num, lowest_num);
-      printf("\nLargest common divisor = %d\n\n", largest_common);
+      print_largest_divisor(largest_common);
       continue;
     }
 
@@ -131,10 +132,15 @@ int main(void)
       }
     }
 
-    printf("\nLargest common divisor = %d\n\n", largest_common);
+    print_largest_divisor(largest_common);
   }
 
   return EXIT_SUCCESS;
+}
+
+void print_largest_divisor(int largest_divisor)
+{
+  printf("\nLargest common divisor = %d\n\n", largest_divisor);
 }
 
 bool is_prime(int num)
